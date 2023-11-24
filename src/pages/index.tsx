@@ -1,11 +1,10 @@
-"use client";
 
-import { useQuery } from "@tanstack/react-query";
 import { Inter } from "next/font/google";
 import { trpc } from "../utils/trpc";
-import { getOptionForVote, getRandomPokemon } from "../utils/getRandomPokemon";
+import { getOptionForVote } from "../utils/getRandomPokemon";
 import { Suspense, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +29,7 @@ export default function Home() {
   };
 
   return (
+    <>
     <div className="h-screen w-screen flex flex-col justify-center items-center">
       <div className="text-2xl text-center">Which Pokemon is Rounder?</div>
       <div className="p-2"></div>
@@ -49,6 +49,7 @@ export default function Home() {
         </Suspense>
       </div>
     </div>
+    </>
   );
 }
 
@@ -58,7 +59,7 @@ interface PropsPokemon {
 }
 
 export const PokemonListing: React.FC<PropsPokemon> = ({ pokemonId, vote }) => {
-  const { data: pokemon, isLoading } = trpc.getPokemonById.useQuery({
+  const { data: pokemon } = trpc.getPokemonById.useQuery({
     id: +pokemonId,
   });
 
@@ -69,17 +70,17 @@ export const PokemonListing: React.FC<PropsPokemon> = ({ pokemonId, vote }) => {
           <Image
             width={100}
             height={100}
-            alt="Pokemon Ebalo"
+            alt="Pokemon"
             src={`${pokemon?.spritesUrl}`}
           />
           <div className="text-xl text-center capitalize">
             {pokemon?.nickname}
-          </div>{" "}
+          </div>
         </>
       ) : (
         <>
-          <div className="animate-pulse rounded-full bg-orange-900 h-[96px] w-full mb-1" />
-          <div className="animate-pulse rounded-md bg-orange-900 h-[24px] w-full" />
+          <div className="animate-pulse rounded-full bg-gray-600 h-[96px] w-full mb-1" />
+          <div className="animate-pulse rounded-md bg-gray-600 h-[28px] w-full" />
         </>
       )}
       <button

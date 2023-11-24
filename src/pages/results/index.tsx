@@ -1,5 +1,5 @@
 import React from "react";
-import { prisma } from "../server/utils/prisma";
+import { prisma } from "../../server/utils/prisma";
 import { inferAsyncReturnType } from "@trpc/server";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
@@ -57,7 +57,7 @@ export const Results: React.FC<{
   pokemon: PokemonQueryResults;
 }> = (props) => {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center pt-20">
       <h2 className="text-2xl">Results</h2>
       <div className="p-2" />
       <div className="flex flex-col w-full max-w-2xl border">
