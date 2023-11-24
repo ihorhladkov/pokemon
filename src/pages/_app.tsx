@@ -10,8 +10,8 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
 
     <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />
       <Layout>
+        <Component {...pageProps} />
       </Layout>
       <ReactQueryDevtools />
     </QueryClientProvider>

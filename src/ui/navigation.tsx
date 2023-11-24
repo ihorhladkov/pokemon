@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Navigation() {
   return (
-    <div className="absolute top-0 w-full mx-auto border text-center">
+    <div className=" top-0 w-full mx-auto border text-center">
       <Link href="results" className="uppercase hover:text-pink-800 mr-10">
         Results
       </Link>
